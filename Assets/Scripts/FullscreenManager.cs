@@ -4,29 +4,47 @@ using UnityEngine;
 
 public class FullscreenManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    int height = 720;
+    int width = 1280;
+    void Awake()
     {
-
+        DontDestroyOnLoad(gameObject);
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if ((Input.GetKey(KeyCode.LeftAlt) && Input.GetKeyDown(KeyCode.F))
-            || (Input.GetKey(KeyCode.LeftControl) && Input.GetKeyDown(KeyCode.F))
-            || (Input.GetKey(KeyCode.LeftCommand) && Input.GetKeyDown(KeyCode.F))
-            || (Input.GetKeyDown(KeyCode.Escape)))
+        ToggleFullScreen();
+    }
+
+    void ToggleFullScreen()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
+            DisableFullScreen();
+        }
+
+        if ((Input.GetKey(KeyCode.LeftAlt) && Input.GetKeyDown(KeyCode.F)) ||
+            (Input.GetKey(KeyCode.LeftControl) && Input.GetKeyDown(KeyCode.F)) ||
+            (Input.GetKey(KeyCode.LeftCommand) && Input.GetKeyDown(KeyCode.F))) {
+
             if (Screen.fullScreen)
             {
-                Screen.SetResolution(1280, 720, false);
+                DisableFullScreen();
             }
             else
             {
-                //Screen.SetResolution(Screen.currentResolution.width, Screen.currentResolution.height, true);
-                Screen.SetResolution(1280, 720, true);
+                EnableFullScreen();
             }
         }
+    }
+
+    void DisableFullScreen()
+    {
+        Screen.SetResolution(width, height, false);
+    }
+
+    void EnableFullScreen()
+    {
+        Screen.SetResolution(width, height, true);
     }
 }

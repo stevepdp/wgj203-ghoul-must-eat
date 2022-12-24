@@ -7,6 +7,8 @@ TagManager:
   - Wall
   - Enemy
   - MobileControl
+  - FullScreenManager
+  - GameManager
   layers:
   - Default
   - TransparentFX
