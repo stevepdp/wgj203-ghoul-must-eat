@@ -578,7 +578,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 00_Start
+          m_StringArgument: 00_Init
           m_BoolArgument: 0
         m_CallState: 1
 --- !u!114 &1104458378
