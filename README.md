@@ -1,5 +1,7 @@
 # Ghoul Must Eat
 
+[![Play Ghoul Must Eat on Itch.io](itch-io-colour.png)](https://stevepdp.itch.io/ghoul-must-eat)  
+
 Made in one week for Weekly Game Jam 203 with theme "Eat the Enemy".
 
 
