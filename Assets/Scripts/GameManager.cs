@@ -1,51 +1,68 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GameManager : MonoBehaviour {
+public class GameManager : MonoBehaviour
+{
+    static GameManager instance;
+    public static GameManager Instance
+    {
+        get
+        {
+            if (instance == null)
+            {
+                instance = GameObject.FindObjectOfType<GameManager>();
+            }
+            if (instance == null)
+            {
+                instance = Instantiate(new GameObject("GameManager")).AddComponent<GameManager>();
+            }
+            return instance;
+        }
+    }
 
-    private string _sceneName;
+    int totalGhouls;
 
-    [SerializeField]
-    private int _totalGhouls;
-    [SerializeField]
-    private float _totalSecondsSurvived;
+    public int TotalGhouls {
+        get { return totalGhouls; }
+        set { totalGhouls = value; }
+    }
 
     void Awake()
     {
-        // for object persistance
+        EnforceSingleInstance();
+    }
+
+    void OnEnable()
+    {
+        PlayerHealth.OnPlayerDead += GameOver;
+        PlayerHealth.OnPlayerHealthIncreased += GhoulCountUpdate;
+    }
+
+    void OnDisable()
+    {
+        PlayerHealth.OnPlayerDead -= GameOver;
+        PlayerHealth.OnPlayerHealthIncreased -= GhoulCountUpdate;
+    }
+
+    void EnforceSingleInstance()
+    {
+        if (instance == null)
+            instance = this;
+        else if (instance != this)
+            Destroy(gameObject);
+
         DontDestroyOnLoad(gameObject);
     }
 
-    // Start is called before the first frame update
-    void Start()
+    void GhoulCountUpdate(int ghoulCount)
     {
+        totalGhouls = ghoulCount;
     }
 
-    public string GetSurviveTime()
+    public void GameOver()
     {
-        return _totalSecondsSurvived.ToString();
-    }
-
-    public string GetTotalGhouls()
-    {
-        return _totalGhouls.ToString();
-    }
-
-      public void UpdateHordeCount(int count)
-    {
-        _totalGhouls = count;
-    }
-
-    public void UpdateSecondsSurvived(float seconds)
-    {
-        _totalSecondsSurvived = seconds;
-    }
-
-    public void OnGameOver()
-    {
-        Debug.Log("GameOver condition met");
-        SceneManager.LoadScene("99_Results");
+        Scene activeScene = SceneManager.GetActiveScene();
+        if (activeScene != null)
+            SceneManager.LoadScene(activeScene.buildIndex + 1, LoadSceneMode.Single);
     }
 }
