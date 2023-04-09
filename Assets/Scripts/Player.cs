@@ -14,10 +14,10 @@ public class Player : MonoBehaviour
     private float horizontalInput;
     private float verticalInput;
 
-    private GameManager _gameManager;
+    GameManager gameManager;
     private SpriteRenderer _spriteRenderer;
     public Text _ghoulCount;
-    private float _textDistFromGhoul = 64; // ghost is 32x32. font height is 16. So 32+16 = 48
+    private float _textDistFromGhoul = 32; // ghost is 32x32. font height is 16. So 32+16 = 48
                                            // on each 0.25f scale, we take this value + (32/4)
                                            // to reposition the text correctly
 
@@ -47,12 +47,12 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        gameManager = GameObject.FindObjectOfType<GameManager>();
         transform.position = new Vector3(-1, 0, 0);
 
         // set default values
         _hp = 1;
-        _gameManager.UpdateHordeCount(_hp);
+        gameManager.UpdateHordeCount(_hp);
 
     }
 
@@ -80,7 +80,7 @@ public class Player : MonoBehaviour
     {
         // increase horde count
         _hp++;
-        _gameManager.UpdateHordeCount(_hp);
+        gameManager.UpdateHordeCount(_hp);
 
         // decrease movement speed
         if (_speed >= 1f)
@@ -99,8 +99,8 @@ public class Player : MonoBehaviour
     void OnCollideWithWall()
     {
         //_hp--;
-        //if (_hp <= 0) _gameManager.OnGameOver();
-        _gameManager.OnGameOver();
+        //if (_hp <= 0) gameManager.OnGameOver();
+        gameManager.OnGameOver();
     }
 
     private void OnTriggerEnter2D(Collider2D other)

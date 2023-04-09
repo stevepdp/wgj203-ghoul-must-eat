@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class GameOver : MonoBehaviour
 {
-    private GameManager _gameManager;
+    private GameManager gameManager;
 
     public Text _ghoulCount;
     public Text _surviveTime;
@@ -13,14 +13,14 @@ public class GameOver : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
     void LateUpdate()
     {
-        string ghouls = _gameManager.GetTotalGhouls();
-        string surviveTime = _gameManager.GetSurviveTime();
+        string ghouls = gameManager.GetTotalGhouls();
+        string surviveTime = gameManager.GetSurviveTime();
 
         _ghoulCount.text = "you grew a horde of " + ghouls + " ghouls";
         _surviveTime.text = "";
