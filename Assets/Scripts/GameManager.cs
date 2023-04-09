@@ -35,13 +35,11 @@ public class GameManager : MonoBehaviour
     void OnEnable()
     {
         PlayerHealth.OnPlayerDead += GameOver;
-        PlayerHealth.OnPlayerHealthIncreased += GhoulCountUpdate;
     }
 
     void OnDisable()
     {
         PlayerHealth.OnPlayerDead -= GameOver;
-        PlayerHealth.OnPlayerHealthIncreased -= GhoulCountUpdate;
     }
 
     void EnforceSingleInstance()
@@ -52,11 +50,6 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
 
         DontDestroyOnLoad(gameObject);
-    }
-
-    void GhoulCountUpdate(int ghoulCount)
-    {
-        totalGhouls = ghoulCount;
     }
 
     public void GameOver()
