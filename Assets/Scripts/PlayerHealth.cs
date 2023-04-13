@@ -3,14 +3,14 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
-    [SerializeField] byte hp = 1;
-
     public static event Action OnPlayerDead;
     public static event Action OnPlayerGrowth;
-    
+
+    byte hp = 1;
+
     void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.CompareTag("Enemy"))
+        if (other.gameObject.CompareTag("Human"))
         {
             hp++;
             if (GameManager.Instance != null)

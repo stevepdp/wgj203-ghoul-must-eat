@@ -1,14 +1,30 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class FullscreenManager : MonoBehaviour
 {
-    int height = 720;
-    int width = 1280;
+    static FullscreenManager instance;
+    public static FullscreenManager Instance
+    {
+        get
+        {
+            if (instance == null)
+            {
+                instance = GameObject.FindObjectOfType<FullscreenManager>();
+            }
+            if (instance == null)
+            {
+                instance = Instantiate(new GameObject("FullscreenManager")).AddComponent<FullscreenManager>();
+            }
+            return instance;
+        }
+    }
+
+    const int WIDTH = 1280;
+    const int HEIGHT = 720;
+
     void Awake()
     {
-        DontDestroyOnLoad(gameObject);
+        EnforceSingleInstance();
     }
 
     void Update()
@@ -16,35 +32,33 @@ public class FullscreenManager : MonoBehaviour
         ToggleFullScreen();
     }
 
+    void EnforceSingleInstance()
+    {
+        if (instance == null)
+            instance = this;
+        else if (instance != this)
+            Destroy(gameObject);
+
+        DontDestroyOnLoad(gameObject);
+    }
+
     void ToggleFullScreen()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
-        {
             DisableFullScreen();
-        }
 
         if ((Input.GetKey(KeyCode.LeftAlt) && Input.GetKeyDown(KeyCode.F)) ||
             (Input.GetKey(KeyCode.LeftControl) && Input.GetKeyDown(KeyCode.F)) ||
             (Input.GetKey(KeyCode.LeftCommand) && Input.GetKeyDown(KeyCode.F))) {
 
             if (Screen.fullScreen)
-            {
                 DisableFullScreen();
-            }
             else
-            {
                 EnableFullScreen();
-            }
         }
     }
 
-    void DisableFullScreen()
-    {
-        Screen.SetResolution(width, height, false);
-    }
+    void DisableFullScreen() => Screen.SetResolution(WIDTH, HEIGHT, false);
 
-    void EnableFullScreen()
-    {
-        Screen.SetResolution(width, height, true);
-    }
+    void EnableFullScreen() => Screen.SetResolution(WIDTH, HEIGHT, true);
 }

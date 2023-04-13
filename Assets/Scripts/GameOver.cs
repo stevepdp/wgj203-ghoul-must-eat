@@ -3,19 +3,27 @@ using UnityEngine.UI;
 
 public class GameOver : MonoBehaviour
 {
+    [SerializeField] Text ghoulCountText;
+    [SerializeField] Text survivedTimeText;
 
-    public Text _ghoulCount;
-    public Text _surviveTime;
+    const string GHOUL_COUNT_PREFIX = "You grew a horde of ";
+    const string GHOUL_COUNT_SUFFIX = " ghouls";
+    const string SURVIVE_TIME_PREFIX = "You survived: ";
 
-    // Start is called before the first frame update
     void Start()
     {
+        SetGameoverText();
     }
 
-    // Update is called once per frame
-    void LateUpdate()
+    void SetGameoverText()
     {
-        string ghouls = GameManager.Instance.TotalGhouls.ToString();
-        _ghoulCount.text = "you grew a horde of " + ghouls + " ghouls";
+        if (GameManager.Instance != null)
+        {
+            if (ghoulCountText != null)
+                ghoulCountText.text = GHOUL_COUNT_PREFIX + GameManager.Instance.TotalGhouls.ToString() + GHOUL_COUNT_SUFFIX;
+
+            if (survivedTimeText != null)
+                survivedTimeText.text = SURVIVE_TIME_PREFIX + GameManager.Instance.ElapsedTimeFormatted;
+        }
     }
 }

@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public static event Action OnGameOver;
     public static event Action<string> OnTimerUpdate;
 
     const byte SECONDS_PER_MINUTE = 60;
@@ -29,15 +30,22 @@ public class GameManager : MonoBehaviour
     const string TIMER_TIME_FORMAT = "{0:00}:{1:00}";
 
     Coroutine timerCoroutine;
-    byte totalGhouls;
+    byte totalGhouls = 1;
     float elapsedTime;
-    
+    string elapsedTimeFormatted;
+
     public float ElapsedTime
     {
         get { return elapsedTime; }
     }
 
-    public byte TotalGhouls {
+    public string ElapsedTimeFormatted
+    {
+        get { return elapsedTimeFormatted; }
+    }
+
+    public byte TotalGhouls
+    {
         get { return totalGhouls; }
         set { totalGhouls = value; }
     }
@@ -69,7 +77,8 @@ public class GameManager : MonoBehaviour
             int minutes = Mathf.FloorToInt(elapsedTime / SECONDS_PER_MINUTE);
             int seconds = Mathf.FloorToInt(elapsedTime % SECONDS_PER_MINUTE);
 
-            OnTimerUpdate?.Invoke(string.Format(TIMER_TIME_FORMAT, minutes, seconds));
+            elapsedTimeFormatted = string.Format(TIMER_TIME_FORMAT, minutes, seconds);
+            OnTimerUpdate?.Invoke(elapsedTimeFormatted);
 
             yield return new WaitForSeconds(TIMER_UPDATE_INTERVAL);
 
@@ -94,11 +103,9 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
-        if (timerCoroutine != null)
-        {
-            StopCoroutine(timerCoroutine);
-            timerCoroutine = null;
-        }
+        OnGameOver?.Invoke();
+
+        StopCoroutine(timerCoroutine);
 
         Scene activeScene = SceneManager.GetActiveScene();
         if (activeScene != null)
