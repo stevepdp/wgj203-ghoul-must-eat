@@ -132,7 +132,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3794387842558879644, guid: 9e73e9a9096f0c646a4e0a28dbdb8afc, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3794387842558879644, guid: 9e73e9a9096f0c646a4e0a28dbdb8afc, type: 3}
       propertyPath: m_LocalPosition.x
@@ -177,6 +177,10 @@ PrefabInstance:
     - target: {fileID: 5662188960255822781, guid: 9e73e9a9096f0c646a4e0a28dbdb8afc, type: 3}
       propertyPath: m_Name
       value: Walls
+      objectReference: {fileID: 0}
+    - target: {fileID: 5662188960255822781, guid: 9e73e9a9096f0c646a4e0a28dbdb8afc, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9e73e9a9096f0c646a4e0a28dbdb8afc, type: 3}
@@ -262,7 +266,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &373863213
 GameObject:
@@ -276,7 +280,7 @@ GameObject:
   - component: {fileID: 373863216}
   - component: {fileID: 373863215}
   m_Layer: 5
-  m_Name: Text
+  m_Name: CreditsText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -295,12 +299,12 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1811258354}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 300}
-  m_SizeDelta: {x: 600, y: 0}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: -32}
+  m_SizeDelta: {x: 1000, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &373863215
 MonoBehaviour:
@@ -323,28 +327,22 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 16
+    m_Font: {fileID: 12800000, guid: 86c267c759d68f84fad12ca688b88563, type: 3}
+    m_FontSize: 22
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 220
-    m_Alignment: 0
+    m_Alignment: 1
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'This work benefits from the commons:
+  m_Text: '-- 2D Art --
 
-
-
-    2D Art
-
-    =====
-
-    1)
-    "Onscreen Controls" by "Kenney" is licensed CC0 1.0 Universal:
+    "Onscreen Controls" by "Kenney" is licensed CC0 1.0
+    Universal:
 
     https://www.kenney.nl/assets/onscreen-controls
 
@@ -352,11 +350,9 @@ MonoBehaviour:
 
 
 
-    Fonts
+    --
+    Fonts --
 
-    =====
-
-    1)
     "Kenney Mini" by "Kenney" is licensed CC0 1.0 Universal:
 
     https://www.kenney.nl/assets/kenney-fonts
@@ -364,9 +360,8 @@ MonoBehaviour:
     https://creativecommons.org/publicdomain/zero/1.0/legalcode
 
 
-
-    2)
-    "Kenney Mini Square" by "Kenney" is licensed CC0 1.0 Universal:
+    "Kenney
+    Mini Square" by "Kenney" is licensed CC0 1.0 Universal:
 
     https://www.kenney.nl/assets/kenney-fonts
 
@@ -374,17 +369,12 @@ MonoBehaviour:
 
 
 
+    --
+    Shaders --
 
-    Shaders
-
-    =======
-
-    1)
     Free gradient shader for Unity by Alex Strook:
 
-    https://twitter.com/AlexStrook/status/1294735487513645058
-
-'
+    https://twitter.com/AlexStrook/status/1294735487513645058'
 --- !u!222 &373863216
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -507,7 +497,7 @@ RectTransform:
   m_Children:
   - {fileID: 1097019440}
   m_Father: {fileID: 1811258354}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -602,8 +592,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: a86513791a8a3874d869cc2acbf5ea2c, type: 3}
-  m_Type: 0
+  m_Sprite: {fileID: -232562576, guid: 85ec15adf454aa241b5ba3ede78b1a34, type: 3}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -696,7 +686,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1811258350
 GameObject:
@@ -711,7 +701,7 @@ GameObject:
   - component: {fileID: 1811258352}
   - component: {fileID: 1811258351}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: CreditsCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -774,7 +764,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -790,57 +780,13 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1385172194}
   - {fileID: 373863214}
+  - {fileID: 1385172194}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!1 &1926473864
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1926473865}
-  - component: {fileID: 1926473866}
-  m_Layer: 0
-  m_Name: GameManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
---- !u!4 &1926473865
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1926473864}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.18252142, y: 0.0448701, z: -1004.8988}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1926473866
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1926473864}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2598ec60168e90a4ea7dc15a50cdd8da, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
