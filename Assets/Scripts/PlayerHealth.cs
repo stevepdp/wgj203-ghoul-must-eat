@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
-    [SerializeField] int hp = 1;
+    [SerializeField] byte hp = 1;
 
     public static event Action OnPlayerDead;
     public static event Action OnPlayerGrowth;

@@ -1,3 +1,5 @@
+using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -20,9 +22,22 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    int totalGhouls;
+    public static event Action<string> OnTimerUpdate;
 
-    public int TotalGhouls {
+    const byte SECONDS_PER_MINUTE = 60;
+    const byte TIMER_UPDATE_INTERVAL = 1;
+    const string TIMER_TIME_FORMAT = "{0:00}:{1:00}";
+
+    Coroutine timerCoroutine;
+    byte totalGhouls;
+    float elapsedTime;
+    
+    public float ElapsedTime
+    {
+        get { return elapsedTime; }
+    }
+
+    public byte TotalGhouls {
         get { return totalGhouls; }
         set { totalGhouls = value; }
     }
@@ -30,6 +45,11 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
         EnforceSingleInstance();
+    }
+
+    void Start()
+    {
+        GameSetup();
     }
 
     void OnEnable()
@@ -42,6 +62,21 @@ public class GameManager : MonoBehaviour
         PlayerHealth.OnPlayerDead -= GameOver;
     }
 
+    IEnumerator UpdateTimer()
+    {
+        while (true)
+        {
+            int minutes = Mathf.FloorToInt(elapsedTime / SECONDS_PER_MINUTE);
+            int seconds = Mathf.FloorToInt(elapsedTime % SECONDS_PER_MINUTE);
+
+            OnTimerUpdate?.Invoke(string.Format(TIMER_TIME_FORMAT, minutes, seconds));
+
+            yield return new WaitForSeconds(TIMER_UPDATE_INTERVAL);
+
+            elapsedTime += TIMER_UPDATE_INTERVAL;
+        }
+    }
+
     void EnforceSingleInstance()
     {
         if (instance == null)
@@ -52,8 +87,19 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
+    void GameSetup()
+    {
+        timerCoroutine = StartCoroutine(UpdateTimer());
+    }
+
     public void GameOver()
     {
+        if (timerCoroutine != null)
+        {
+            StopCoroutine(timerCoroutine);
+            timerCoroutine = null;
+        }
+
         Scene activeScene = SceneManager.GetActiveScene();
         if (activeScene != null)
             SceneManager.LoadScene(activeScene.buildIndex + 1, LoadSceneMode.Single);
