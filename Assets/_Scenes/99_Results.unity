@@ -294,6 +294,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 237639467786851580, guid: 9e73e9a9096f0c646a4e0a28dbdb8afc, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 3096152547126419835, guid: 9e73e9a9096f0c646a4e0a28dbdb8afc, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 3794387842558879644, guid: 9e73e9a9096f0c646a4e0a28dbdb8afc, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -341,6 +349,18 @@ PrefabInstance:
     - target: {fileID: 5662188960255822781, guid: 9e73e9a9096f0c646a4e0a28dbdb8afc, type: 3}
       propertyPath: m_Name
       value: Walls
+      objectReference: {fileID: 0}
+    - target: {fileID: 5662188960255822781, guid: 9e73e9a9096f0c646a4e0a28dbdb8afc, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 5676027443548809869, guid: 9e73e9a9096f0c646a4e0a28dbdb8afc, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 6626947385081726896, guid: 9e73e9a9096f0c646a4e0a28dbdb8afc, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9e73e9a9096f0c646a4e0a28dbdb8afc, type: 3}
@@ -440,7 +460,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!224 &1095782419
 RectTransform:
@@ -747,7 +767,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!224 &1330070494
 RectTransform:
@@ -867,6 +887,10 @@ PrefabInstance:
     - target: {fileID: 3301367863816989794, guid: a54d89e4a749e1f478b0da4fbe478058, type: 3}
       propertyPath: m_Name
       value: Ghoul
+      objectReference: {fileID: 0}
+    - target: {fileID: 3301367863816989794, guid: a54d89e4a749e1f478b0da4fbe478058, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3301367863816989598, guid: a54d89e4a749e1f478b0da4fbe478058, type: 3}
