@@ -9,6 +9,15 @@ public class ExitToOS : MonoBehaviour
 
     void Awake()
     {
+        SetExitButton();
+    }
+
+#if UNITY_STANDALONE
+    public void ExitToDesktop() => Application.Quit();
+#endif
+
+    void SetExitButton()
+    {
 #if UNITY_EDITOR || UNITY_WEBGL
         gameObject.SetActive(false);
 #endif
@@ -20,8 +29,4 @@ public class ExitToOS : MonoBehaviour
         if (exitButtonText != null) exitButtonText.text = "Exit to Linux";
 #endif
     }
-
-#if UNITY_STANDALONE
-    public void ExitToDesktop() => Application.Quit();
-#endif
 }
