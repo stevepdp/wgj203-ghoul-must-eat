@@ -4,7 +4,7 @@
 
 Originally made in one week for Weekly Game Jam 203 with theme "Eat the Enemy".
 
-It has since recieved post-jam fixes and feature improvements.
+It has since received post-jam fixes and feature improvements.
 
 
 ## Summary
