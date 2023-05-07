@@ -17,8 +17,6 @@ It has since received post-jam fixes and feature improvements.
                 <br>
                 Aseprite, GIMP
                 <br>
-                Audacity, Bfxr
-                <br>
                 CC0 and PD assets
                 <br>
                 ChatGPT (AI-assisted time formatting)
