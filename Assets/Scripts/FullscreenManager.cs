@@ -1,21 +1,17 @@
+#if PLATFORM_STANDALONE
 using UnityEngine;
 
 public class FullscreenManager : MonoBehaviour
 {
-#if PLATFORM_STANDALONE
     static FullscreenManager instance;
     public static FullscreenManager Instance
     {
         get
         {
             if (instance == null)
-            {
                 instance = GameObject.FindObjectOfType<FullscreenManager>();
-            }
             if (instance == null)
-            {
                 instance = Instantiate(new GameObject("FullscreenManager")).AddComponent<FullscreenManager>();
-            }
             return instance;
         }
     }
@@ -32,6 +28,10 @@ public class FullscreenManager : MonoBehaviour
     {
         ToggleFullScreen();
     }
+
+    void DisableFullScreen() => Screen.SetResolution(DEFAULT_WIDTH, DEFAULT_HEIGHT, false);
+
+    void EnableFullScreen() => Screen.SetResolution(Screen.currentResolution.width, Screen.currentResolution.height, true);
 
     void EnforceSingleInstance()
     {
@@ -53,17 +53,13 @@ public class FullscreenManager : MonoBehaviour
             (Input.GetKey(KeyCode.LeftControl) && Input.GetKeyDown(KeyCode.Return)) ||
             (Input.GetKey(KeyCode.LeftControl) && Input.GetKeyDown(KeyCode.F)) ||
             (Input.GetKey(KeyCode.LeftCommand) && Input.GetKeyDown(KeyCode.Return)) ||
-            (Input.GetKey(KeyCode.LeftCommand) && Input.GetKeyDown(KeyCode.F))) {
-
+            (Input.GetKey(KeyCode.LeftCommand) && Input.GetKeyDown(KeyCode.F)))
+        {
             if (Screen.fullScreen)
                 DisableFullScreen();
             else
                 EnableFullScreen();
         }
     }
-
-    void DisableFullScreen() => Screen.SetResolution(DEFAULT_WIDTH, DEFAULT_HEIGHT, false);
-
-    void EnableFullScreen() => Screen.SetResolution(Screen.currentResolution.width, Screen.currentResolution.height, true);
-#endif
 }
+#endif
