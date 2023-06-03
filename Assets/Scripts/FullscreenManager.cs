@@ -1,4 +1,3 @@
-#if PLATFORM_STANDALONE
 using UnityEngine;
 
 public class FullscreenManager : MonoBehaviour
@@ -62,4 +61,3 @@ public class FullscreenManager : MonoBehaviour
         }
     }
 }
-#endif
